@@ -1,0 +1,1 @@
+{"version":3,"sources":["js/popup/popup.js"],"names":["test","console","log"],"mappings":";AAAA,IAAMA,EAAO,SAAPA,IACFC,QAAQC,IAAI,QACZF,KAGJA","file":"popup.773379b0.js","sourceRoot":"..\\src","sourcesContent":["const test = () => {\r\n    console.log('test');\r\n    test();\r\n}\r\n\r\ntest()\r\n"]}

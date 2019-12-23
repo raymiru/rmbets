@@ -1,0 +1,37 @@
+{
+  "name": "Hanzo",
+  "manifest_version": 2,
+  "version": "1.1",
+  "permissions": [
+    "https://*/*",
+    "https://bet365.mx",
+    "https://betscsgo.me",
+    "https://betsdota2.co",
+    "https://gg19.bet",
+    "https://gor1llawin.com",
+    "https://play.esea.net",
+    "https://www.parimatch.ru/"
+  ],
+  "background": {
+    "scripts": ["background.bundle.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "https://bet365.mx/*",
+        "https://betscsgo.me/*",
+        "https://betsdota2.co/*",
+        "https://gg19.bet/*",
+        "https://gor1llawin.com/*",
+        "https://play.esea.net/*",
+        "https://www.parimatch.ru/*"
+      ],
+      "js": [
+        "main.bundle.js"
+      ]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

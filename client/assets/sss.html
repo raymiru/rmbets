@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Websockets - Subscribe to matches</title>
+  <!-- YOU NEED TO UPDATE THE AUTHORIZATION TOKEN WITH THE ONE IN YOUR FREE TRIAL PAGE -->
+  <script src="https://cdn.jsdelivr.net/npm/sails.io.js-dist@1.2.1/sails.io.js" environment="production" headers='{ "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2VkcC5ldS5hdXRoMC5jb20vIiwic3ViIjoiNmtUN0R2T0huY0tvS29oMnUxSENTQ2hyR1owWGNwQklAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpdjEuZXNwb3J0cy1kYXRhLXByb3ZpZGVyLmNvbSIsImlhdCI6MTU2OTQxNjM3OSwiZXhwIjoxNTY5NTA2Mzc5LCJhenAiOiI2a1Q3RHZPSG5jS29Lb2gydTFIQ1NDaHJHWjBYY3BCSSIsInNjb3BlIjoic2tpcDpyYXRlMTUgbGl2ZTpvdmVyd2F0Y2ggcmVzdDpvdmVyd2F0Y2ggbGl2ZTpkb3RhIHJlc3Q6ZG90YSBsaXZlOmxvbCByZXN0OmxvbCBsaXZlOmNzZ28gcmVzdDpjc2dvIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.i5DIG3Nbjt6PAYhzan5ukhvUOZ3UEecPMKniBGTcQLM" }'></script>
+  <script type="text/javascript">
+    io.sails.url = 'https://apiv1.esports-data-provider.com:1350';
+    //Subscribe to all matches update
+    io.socket.post('/subscribeToMatches', {}, function responseFromServer(body, response) {
+      console.log("The server responded with status " + response.statusCode + " and said: ", body);
+    });
+
+    //Subscribe to a specific match
+    io.socket.post('/subscribeToMatch', {match_id:4998}, function responseFromServer(body, response) {
+      console.log("The server responded with status " + response.statusCode + " and said: ", body);
+    });
+
+    //Watch the matches and react accordingly
+    io.socket.on('match', function(event) {
+      switch (event.verb) {
+        case "updated":
+          //This is what interest you, every time a match is updated, you will know about it
+          console.log(event.data);
+          break;
+
+        case "created":
+          //A new match has been created, might be useful
+          console.log(event.data);
+          break;
+      }
+    });
+  </script>
+</head>
+
+<body>
+<h1>Do not forget to update the Authorization token in the script tag.</h1>
+<h2>Then look out for the console.log(), updates will be displayed</h2>
+</body>
+
+</html>

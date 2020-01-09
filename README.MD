@@ -1,5 +1,4 @@
 # RMBETS
-Проект для оптимазации процесса ставок на сайте betsdota2 / betscsgo
 ![Иллюстрация к проекту](https://sun9-28.userapi.com/c855524/v855524291/c2998/T2eSXqjf-f8.jpg)
 ## bets_watcher
 парсер матчей, chrome extension
